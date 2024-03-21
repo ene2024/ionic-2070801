@@ -7,6 +7,14 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  title: string = "Mi nueva página :)";
+
+  hazmeClic(): void {
+    alert("Me hiciste clic!");
+  }
+
+  imgUrl: string = "https://i.redd.it/7ksiaa4exhh01.gif";
+
   constructor() {
     console.log("AppComponent: Constructor");
   }

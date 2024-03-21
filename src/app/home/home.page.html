@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      {{title}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,6 +12,11 @@
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div id="container">
+    <ion-button (click)="hazmeClic()">Hazme click!</ion-button>
+    <img [src]="imgUrl" alt="perrito programador" style="margin-left: 2rem;">
+  </div>
 
   <app-nuevo-componente></app-nuevo-componente>
 </ion-content>
