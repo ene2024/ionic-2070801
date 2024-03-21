@@ -1,6 +1,6 @@
-<div *ngIf="verdadero" class="ion-text-center">
-  <p>Si ves este mensaje, <strong>verdadero</strong> es <strong>{{true}}</strong> </p>
-</div>
-<div *ngIf="!verdadero" class="ion-text-center">
-  <p>Si ves este mensaje, <strong>verdadero</strong> es <strong>{{false}}</strong> </p>
+<div class="ion-text-center">
+  <p [ngClass]="{'rojo': verdadero, 'azul': !verdadero}">
+    Si ves este mensaje en color rojo, <strong>verdadero</strong> es <strong>true</strong>,
+    pero si lo ves en color azul, <strong>verdadero</strong> es <strong>false</strong>
+  </p>
 </div>
