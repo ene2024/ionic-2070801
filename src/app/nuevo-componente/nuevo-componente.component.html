@@ -1,3 +1,6 @@
-<p>
-  nuevo-componente works!
-</p>
+<div *ngIf="verdadero" class="ion-text-center">
+  <p>Si ves este mensaje, <strong>verdadero</strong> es <strong>{{true}}</strong> </p>
+</div>
+<div *ngIf="!verdadero" class="ion-text-center">
+  <p>Si ves este mensaje, <strong>verdadero</strong> es <strong>{{false}}</strong> </p>
+</div>
