@@ -1,0 +1,7 @@
+{
+  "name": "miAppDeTareas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
