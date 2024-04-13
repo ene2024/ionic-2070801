@@ -1,0 +1,16 @@
+<ion-card *ngFor="let tarea of tareas">
+  <ion-card-header>
+    <ion-card-title> {{tarea.nombre}} </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    Fecha: {{tarea.mes}} / {{tarea.anio}}
+  </ion-card-content>
+  <ion-button *ngIf="!tarea.mostrarDescripcion" expand="full" color="dark" (click)="tarea.mostrarDescripcion = true">
+    <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+    Ver más detalles...
+  </ion-button>
+  <ion-card-content *ngIf="tarea.mostrarDescripcion">
+    Descripción: {{tarea.descripcion}}
+  </ion-card-content>
+  <ion-button *ngIf="tarea.mostrarDescripcion" expand="full" color="dark" (click)="tarea.mostrarDescripcion = false">Mostrar menos...</ion-button>
+</ion-card>

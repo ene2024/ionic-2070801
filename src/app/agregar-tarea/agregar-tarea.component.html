@@ -1,0 +1,43 @@
+<form #tareaForm="ngForm" (ngSubmit)="onSubmit(tareaForm)">
+  <ion-list>
+    <ion-item>
+      <ion-input label="Nombre" name="nombre" [(ngModel)]="nuevaTarea.nombre" placeholder="Ingrese el nombre de la tarea..." required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select name="mes" label="Mes" placeholder="Mes" slot="start" [(ngModel)]="nuevaTarea.mes" required>
+        <ion-select-option value="01">Enero</ion-select-option>
+        <ion-select-option value="02">Febrero</ion-select-option>
+        <ion-select-option value="03">Marzo</ion-select-option>
+        <ion-select-option value="04">Abril</ion-select-option>
+        <ion-select-option value="05">Mayo</ion-select-option>
+        <ion-select-option value="06">Junio</ion-select-option>
+        <ion-select-option value="07">Julio</ion-select-option>
+        <ion-select-option value="08">Agosto</ion-select-option>
+        <ion-select-option value="09">Septiembre</ion-select-option>
+        <ion-select-option value="10">Octubre</ion-select-option>
+        <ion-select-option value="11">Noviembre</ion-select-option>
+        <ion-select-option value="12">Diciembre</ion-select-option>
+      </ion-select>
+      <ion-select name="año" label="Año" placeholder="Año" slot="start" [(ngModel)]="nuevaTarea.anio" required>
+        <ion-select-option value="2024">2024</ion-select-option>
+        <ion-select-option value="2025">2025</ion-select-option>
+        <ion-select-option value="2026">2026</ion-select-option>
+        <ion-select-option value="2027">2027</ion-select-option>
+        <ion-select-option value="2028">2028</ion-select-option>
+        <ion-select-option value="2029">2029</ion-select-option>
+        <ion-select-option value="2030">2030</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-textarea
+      label="Descripción"
+      [(ngModel)]="nuevaTarea.descripcion"
+      placeholder="Ingrese una descripción..."
+      [autoGrow]="true"
+      name="descripcion"
+      required
+      ></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" color="dark" (click)="onSubmit(tareaForm)">Agregar</ion-button>
+</form>
