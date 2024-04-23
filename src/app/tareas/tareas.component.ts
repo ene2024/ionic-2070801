@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComunicadorService } from '../comunicador.service';
+import { Tarea } from 'src/TareasInterface';
 
 @Component({
   selector: 'app-tareas',
@@ -7,19 +8,12 @@ import { ComunicadorService } from '../comunicador.service';
   styleUrls: ['./tareas.component.scss'],
 })
 export class TareasComponent  implements OnInit {
-  tareas: Array<any>;
+  tareas: Tarea[] = [];
 
   constructor(private servicio: ComunicadorService) {
-    this.tareas = [
-      {nombre: "Llevar a Bruno al veterinario", mes: "05", anio: "2024", descripcion: "Adios", mostrarDescripcion: false},
-      {nombre: "Recordar tarea de Aplicaciones Móviles", mes: "05", anio: "2024", descripcion: "Hola", mostrarDescripcion: false}
-    ]
+    this.tareas = servicio.recibirTareas();
   }
 
-  ngOnInit() {
-  //   this.servicio.recibirTarea().subscribe(tareaNueva => {
-  //   this.tareas.push(tareaNueva);
-  // })
-  }
+  ngOnInit() { }
 
 }

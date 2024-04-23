@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ComunicadorService } from '../comunicador.service';
+import { Tarea } from 'src/TareasInterface';
 
 @Component({
   selector: 'app-agregar-tarea',
@@ -10,13 +11,13 @@ import { ComunicadorService } from '../comunicador.service';
 export class AgregarTareaComponent  implements OnInit {
   @Output() mostrarForm = new EventEmitter<boolean>();
 
-  nuevaTarea = {
+  nuevaTarea: Tarea = {
     nombre: '',
-    mes: '',
     anio: '',
+    mes: '',
     descripcion: '',
     mostrarDescripcion: false
-  }
+  };
 
   constructor(private servicio: ComunicadorService) {}
 
@@ -27,10 +28,8 @@ export class AgregarTareaComponent  implements OnInit {
       return;
     }
 
-    // Pasar info a componente tareas para que lo guarde en el array y agregar el valor de mostrarDescripcion = false
+    // Pasar info a servicio para que lo guarde en el array
     this.servicio.enviarTarea(this.nuevaTarea);
-
-    // Mostrar tarjetas ?
 
     // Oculto el formulario
     this.mostrarForm.emit(false);

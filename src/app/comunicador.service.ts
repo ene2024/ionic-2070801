@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Tarea } from 'src/TareasInterface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComunicadorService {
-  private infoTarea = new BehaviorSubject<any>({});
+  private TareaArray: Tarea[] = [];
 
-  enviarTarea(nuevaTarea: object) {
-    this.infoTarea.next(nuevaTarea);
+  enviarTarea(nuevaTarea: Tarea) {
+    // Se valida antes de llamar a la función
+    this.TareaArray.push(nuevaTarea);
   }
 
-  recibirTarea() {
-    return this.infoTarea.asObservable();
+  recibirTareas() {
+    return this.TareaArray;
   }
 
   constructor() { }
