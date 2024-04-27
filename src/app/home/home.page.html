@@ -1,22 +1,60 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title *ngIf="mostrarTarjetas">
+    <ion-title>
       Mi App de Tareas
-    </ion-title>
-    <ion-title *ngIf="!mostrarTarjetas">
-      Agregar Tarea
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-tareas *ngIf="mostrarTarjetas"></app-tareas>
+  <app-tareas></app-tareas>
 
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end" (click)="newForm()" *ngIf="mostrarBoton">
-    <ion-fab-button color="dark" click="newForm()">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="dark" id="nuevoFormulario">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
-  <app-agregar-tarea *ngIf="mostrarFormulario" (mostrarForm)="recibirMostrarForm($event)" ></app-agregar-tarea>
+  <ion-modal trigger="nuevoFormulario">
+    <ng-template>
+      <div>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancelar(0)">Cancelar</ion-button>
+          </ion-buttons>
+          <ion-title>Agregar tarea</ion-title>
+        </ion-toolbar>
+      </ion-header>
+        <app-agregar-tarea></app-agregar-tarea>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+    <ion-fab-button color="dark" id="modalEliminar">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-modal trigger="modalEliminar">
+    <ng-template>
+      <div>
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="cancelar(1)">Cancelar</ion-button>
+            </ion-buttons>
+            <ion-title>Eliminar tarea</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-list>
+          <ion-item>
+            <ion-input label="Nombre" name="nombre" placeholder="Ingrese el nombre de la tarea a eliminar..." [(ngModel)]="nombreEliminar" required></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-button expand="block" color="dark" (click)="eliminarTarea(this.nombreEliminar)">Eliminar</ion-button>
+      </div>
+    </ng-template>
+  </ion-modal>
 </ion-content>

@@ -9,12 +9,30 @@ export class ComunicadorService {
   private TareaArray: Tarea[] = [];
 
   enviarTarea(nuevaTarea: Tarea) {
-    // Se valida antes de llamar a la función
     this.TareaArray.push(nuevaTarea);
   }
 
   recibirTareas() {
     return this.TareaArray;
+  }
+
+  borrarTarea(nombreTarea: String) {
+    let index = 0;
+    if (nombreTarea != '' && nombreTarea != undefined) {
+      for (let tarea of this.TareaArray) {
+        if (tarea.nombre.toUpperCase() == nombreTarea.toUpperCase()) {
+          this.TareaArray.splice(index, 1);
+          alert('Tarea eliminada con éxito');
+          console.log('Eliminado con éxito');
+          return;
+        }
+        else {
+          index++;
+        }
+      }
+    }
+    alert('No se encontró la tarea con ese nombre');
+    console.log('No se ha encontrado la tarea');
   }
 
   constructor() { }

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, QueryList, ViewChild, ViewChildren, viewChild } from '@angular/core';
+import { IonModal } from '@ionic/angular';
+import { ComunicadorService } from '../comunicador.service';
+import { Tarea } from 'src/TareasInterface';
 
 @Component({
   selector: 'app-home',
@@ -6,23 +9,23 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  mostrarTarjetas = true;
-  mostrarBoton = true;
-  mostrarFormulario = false;
+  @ViewChildren(IonModal) modals!: QueryList<IonModal>;
+
+  nombreEliminar: String = '';
 
 
-  constructor() {}
+  constructor(private servicio: ComunicadorService) {}
 
-  newForm() {
-    this.mostrarTarjetas = false;
-    this.mostrarBoton = false;
-    this.mostrarFormulario = true;
+  eliminarTarea(nombreTarea: String) {
+    if (nombreTarea == '' || nombreTarea == undefined) {
+      alert('Rellena el campo solicitado');
+      return;
+    }
+    this.servicio.borrarTarea(nombreTarea);
+    this.nombreEliminar = '';
   }
 
-  recibirMostrarForm(mostrarForm: boolean) {
-    this.mostrarFormulario = mostrarForm;
-    this.mostrarTarjetas = !mostrarForm;
-    this.mostrarBoton = !mostrarForm;
+  cancelar(pos: number) {
+    this.modals.toArray()[pos].dismiss(null, 'cancelar');
   }
-
 }
