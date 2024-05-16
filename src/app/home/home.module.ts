@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { TareasComponent } from '../tareas/tareas.component';
 import { AgregarTareaComponent } from '../agregar-tarea/agregar-tarea.component';
+import { VistaDetalleComponent } from '../vista-detalle/vista-detalle.component';
 
 
 @NgModule({
@@ -17,6 +18,6 @@ import { AgregarTareaComponent } from '../agregar-tarea/agregar-tarea.component'
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, TareasComponent, AgregarTareaComponent]
+  declarations: [HomePage, TareasComponent, AgregarTareaComponent, VistaDetalleComponent]
 })
 export class HomePageModule {}

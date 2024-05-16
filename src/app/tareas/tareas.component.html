@@ -1,4 +1,4 @@
-<ion-card *ngFor="let tarea of tareas">
+<ion-card *ngFor="let tarea of tareas" (click)="mostrarDetalle(tarea.nombre)">
   <ion-card-header>
     <ion-card-title> {{tarea.nombre}} </ion-card-title>
   </ion-card-header>

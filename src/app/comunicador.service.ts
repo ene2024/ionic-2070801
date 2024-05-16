@@ -7,6 +7,7 @@ import { Tarea } from 'src/TareasInterface';
 })
 export class ComunicadorService {
   private TareaArray: Tarea[] = [];
+  private tareaDetalle: any;
 
   enviarTarea(nuevaTarea: Tarea) {
     this.TareaArray.push(nuevaTarea);
@@ -33,6 +34,23 @@ export class ComunicadorService {
     }
     alert('No se encontró la tarea con ese nombre');
     console.log('No se ha encontrado la tarea');
+  }
+
+  obtenerTarea(titulo: String) {
+    for (let tarea of this.TareaArray) {
+      if (tarea.nombre.toUpperCase() == titulo.toUpperCase()) {
+        return tarea;
+      }
+    }
+    return null;
+  }
+
+  enviarDetalles(tarea: Tarea) {
+    this.tareaDetalle = tarea;
+  }
+
+  mostrarDetalles() {
+    return this.tareaDetalle;
   }
 
   constructor() { }
